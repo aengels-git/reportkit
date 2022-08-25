@@ -17,3 +17,4 @@ Imports:
     purrr,
     R6,
     rlang
+StagedInstall: no
