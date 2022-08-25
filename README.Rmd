@@ -1,0 +1,52 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+library(tidyverse)
+```
+
+# reportkit
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of reportkit is to make reporting in word and power point simple.
+
+## Installation
+
+You can install the development version of reportkit from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("aengels-git/reportkit")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(tidyverse)
+library(reportkit)
+library(prepkit)
+library(flextable)
+tab2<-prep_freq_table(diamonds,cut,color)
+rtab2<-reporter_table$new(tab2,percent_vector = c(0.5,0.25,0.25),fontsize = 22)
+rtab2$round()
+rtab2$merge_col_cells(column = "cut",h_lines = T)
+rtab2$add_label_row(colwidths = c(2,3,3),values = c("Variables","Frequency","Proportions"),align = "left")
+rtab2$add_caption("Table 1: Table on diamonds")
+rtab2$add_footer("Footer: this is a table")
+```
+```{r }
+rtab2$ft
+```
