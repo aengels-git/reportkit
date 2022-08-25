@@ -28,7 +28,10 @@ quick_table<-function(tab,fontsize=11,
                       as_reporter_table=F,
                       theme_fun=function(x){theme_booktabs(x,bold_header = T)},
                       total_width=6.267717){
-  
+  require(flextable)
+  require(officer)
+  require(magrittr)
+  require(purrr)
   ft<-reporter_table$new(tab,fontsize = fontsize,percent_vector=percent_vector,theme_fun=theme_fun,
                          total_width = total_width)
   ft$round(digits = digits)

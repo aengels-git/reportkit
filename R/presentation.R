@@ -18,6 +18,8 @@ presentation <- R6::R6Class("Presentation", list(
   initialize = function(path) {
     require(flextable)
     require(officer)
+    require(magrittr)
+    require(purrr)
     if(file.exists(path)){
       self$path = tools::file_path_as_absolute(path)
       self$presentation = read_pptx(path)

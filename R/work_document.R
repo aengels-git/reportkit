@@ -7,6 +7,8 @@ word_document<-R6::R6Class("word_document", list(
   initialize = function(path=NULL) {
     require(flextable)
     require(officer)
+    require(magrittr)
+    require(purrr)
     if(is_null(path)){
       self$document<-read_docx()
     }else{

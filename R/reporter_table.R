@@ -53,6 +53,8 @@ reporter_table<-R6::R6Class("reporter_table",
                         total_width=6.267717) {
     require(flextable)
     require(officer)
+    require(magrittr)
+    require(purrr)
     
     self$tab=tab
     self$modified_tab=tab
