@@ -13,7 +13,7 @@
 #' rtab2$add_footer("Footer: this is a table")
 #' 
 #' 
-reporter_table<-R6::R6Class("reporter_table", 
+report_table<-R6::R6Class("report_table", 
                         public = list(
   #' @field tab A dataframe/tibble containing the table information
   tab = NULL,

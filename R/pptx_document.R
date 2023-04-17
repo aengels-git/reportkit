@@ -10,16 +10,15 @@ find_reportkit <- function(){
 #' R6 Class representing a power point presentation that can modify itself
 #' 
 #' @export
-presentation <- R6::R6Class("Presentation", list(
+pptx_document <- R6::R6Class("pptx_document", list(
   presentation = NULL,
   path = NULL,
   ppt_length = 0,
   template = paste0(find_reportkit(),"/reportkit/data/Vorlage UKE.pptx"),
   initialize = function(path) {
-    require(flextable)
-    require(officer)
-    require(magrittr)
-    require(purrr)
+    # Accept name, name.pptx or filepath/name or filepath/name.pptx
+    path <- paste0(fs::path_ext_remove(path),".pptx")
+    
     if(file.exists(path)){
       self$path = tools::file_path_as_absolute(path)
       self$presentation = read_pptx(path)
@@ -61,6 +60,7 @@ presentation <- R6::R6Class("Presentation", list(
         ph_with(value= gg,
                 location = ph_location(left = props$offx + props$cx/2 ,top = props$offy ,width = props$cx/2,height = props$cy))
     }
+    self$ppt_length = length(self$presentation)
   },
   add_flextable = function(tabelle,font_size=30,
                            header="Titel",align="center",current_slide=F,
@@ -106,6 +106,7 @@ presentation <- R6::R6Class("Presentation", list(
         ph_with(value= ft,
                 location = ph_location(left = props$offx + props$cx/2 ,top = props$offy ,width = props$cx/2,height = props$cy))
     }
+    self$ppt_length = length(self$presentation)
     
   },
   open = function(){
@@ -115,9 +116,23 @@ presentation <- R6::R6Class("Presentation", list(
   },
   reload = function(){
     self$presentation = read_pptx(self$path)
+    self$ppt_length = length(self$presentation)
   },
   save = function(){
     (self$presentation)%>%
       print(self$path)
   }
 ))
+
+#' report_pptx
+#'
+#' @param path either a filepath or name / name.pptx to create a file based on a template in the current workding directory. 
+#' Alternatively you may provide a filepath of an existing pptx to read in the existing file.
+#'
+#' @return an R6 Class called presentation that can modify itself interactively
+#' @export
+#'
+#' @examples
+report_pptx<-function(path){
+  return(pptx_document$new(path=path))
+}

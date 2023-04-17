@@ -18,9 +18,9 @@
 #' 
 #' library(prepkit)
 #' tab1<-prep_freq_table(diamonds,cut)
-#' quick_table(tab1,percent_vector = c(0.5,0.25,0.25),fontsize = 22)
+#' report_table(tab1,percent_vector = c(0.5,0.25,0.25),fontsize = 22)
 #' 
-quick_table<-function(tab,fontsize=11,
+report_quick_table<-function(tab,fontsize=11,
                       caption=NULL,
                       footer=NULL,
                       digits=2,
@@ -28,11 +28,7 @@ quick_table<-function(tab,fontsize=11,
                       as_reporter_table=F,
                       theme_fun=function(x){theme_booktabs(x,bold_header = T)},
                       total_width=6.267717){
-  require(flextable)
-  require(officer)
-  require(magrittr)
-  require(purrr)
-  ft<-reporter_table$new(tab,fontsize = fontsize,percent_vector=percent_vector,theme_fun=theme_fun,
+  ft<-report_table$new(tab,fontsize = fontsize,percent_vector=percent_vector,theme_fun=theme_fun,
                          total_width = total_width)
   ft$round(digits = digits)
   if(is_null(caption)==F){

@@ -11,45 +11,45 @@ R6 Class representing a word document that can modify itself
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{word_document$new()}}
-\item \href{#method-add_ft}{\code{word_document$add_ft()}}
-\item \href{#method-add_ggplot}{\code{word_document$add_ggplot()}}
-\item \href{#method-open}{\code{word_document$open()}}
-\item \href{#method-reload}{\code{word_document$reload()}}
-\item \href{#method-save}{\code{word_document$save()}}
-\item \href{#method-clone}{\code{word_document$clone()}}
+\item \href{#method-word_document-new}{\code{word_document$new()}}
+\item \href{#method-word_document-add_flextable}{\code{word_document$add_flextable()}}
+\item \href{#method-word_document-add_ggplot}{\code{word_document$add_ggplot()}}
+\item \href{#method-word_document-open}{\code{word_document$open()}}
+\item \href{#method-word_document-reload}{\code{word_document$reload()}}
+\item \href{#method-word_document-save}{\code{word_document$save()}}
+\item \href{#method-word_document-clone}{\code{word_document$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-word_document-new"></a>}}
+\if{latex}{\out{\hypertarget{method-word_document-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{word_document$new(path = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{word_document$new(path)}\if{html}{\out{</div>}}
 }
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-add_ft"></a>}}
-\if{latex}{\out{\hypertarget{method-add_ft}{}}}
-\subsection{Method \code{add_ft()}}{
+\if{html}{\out{<a id="method-word_document-add_flextable"></a>}}
+\if{latex}{\out{\hypertarget{method-word_document-add_flextable}{}}}
+\subsection{Method \code{add_flextable()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{word_document$add_ft(flextab)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{word_document$add_flextable(flextab, align = "center")}\if{html}{\out{</div>}}
 }
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-add_ggplot"></a>}}
-\if{latex}{\out{\hypertarget{method-add_ggplot}{}}}
+\if{html}{\out{<a id="method-word_document-add_ggplot"></a>}}
+\if{latex}{\out{\hypertarget{method-word_document-add_ggplot}{}}}
 \subsection{Method \code{add_ggplot()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{word_document$add_ggplot(gg, default_theme = T)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{word_document$add_ggplot(gg, width = 6.5, height = 4)}\if{html}{\out{</div>}}
 }
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-open"></a>}}
-\if{latex}{\out{\hypertarget{method-open}{}}}
+\if{html}{\out{<a id="method-word_document-open"></a>}}
+\if{latex}{\out{\hypertarget{method-word_document-open}{}}}
 \subsection{Method \code{open()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{word_document$open()}\if{html}{\out{</div>}}
@@ -57,8 +57,8 @@ R6 Class representing a word document that can modify itself
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-reload"></a>}}
-\if{latex}{\out{\hypertarget{method-reload}{}}}
+\if{html}{\out{<a id="method-word_document-reload"></a>}}
+\if{latex}{\out{\hypertarget{method-word_document-reload}{}}}
 \subsection{Method \code{reload()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{word_document$reload()}\if{html}{\out{</div>}}
@@ -66,8 +66,8 @@ R6 Class representing a word document that can modify itself
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-save"></a>}}
-\if{latex}{\out{\hypertarget{method-save}{}}}
+\if{html}{\out{<a id="method-word_document-save"></a>}}
+\if{latex}{\out{\hypertarget{method-word_document-save}{}}}
 \subsection{Method \code{save()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{word_document$save(path = NULL)}\if{html}{\out{</div>}}
@@ -75,8 +75,8 @@ R6 Class representing a word document that can modify itself
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-word_document-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-word_document-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
