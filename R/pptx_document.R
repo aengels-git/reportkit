@@ -14,8 +14,10 @@ pptx_document <- R6::R6Class("pptx_document", list(
   presentation = NULL,
   path = NULL,
   ppt_length = 0,
-  template = paste0(find_reportkit(),"/reportkit/data/Vorlage UKE.pptx"),
-  initialize = function(path) {
+  template = paste0(find_reportkit(),"/reportkit/data/basic_template.pptx"),
+  theme = NULL,
+  initialize = function(path, theme=dak_theme) {
+    self$theme = theme
     # Accept name, name.pptx or filepath/name or filepath/name.pptx
     path <- paste0(fs::path_ext_remove(path),".pptx")
     
@@ -27,6 +29,13 @@ pptx_document <- R6::R6Class("pptx_document", list(
       #Erstellen der Datei basierend auf einem Template
       self$presentation = read_pptx(path = self$template)
       self$path = path
+      self$presentation <- ph_with(self$presentation, 
+                                   value = fpar(
+                                     ftext("Content", 
+                                           fp_text(font.size = 61.5,
+                                                   font.family = "Calibri Light",
+                                                   color = theme$header_color,bold = TRUE))
+                                   ), location = ph_location(left = 1.078504,top = -0.095 ,width = 15))
       (self$presentation)%>%
         print(self$path)
       self$path = tools::file_path_as_absolute(path)
@@ -46,7 +55,13 @@ pptx_document <- R6::R6Class("pptx_document", list(
     if(current_slide==F){
       self$presentation<-self$presentation%>%
         add_slide(layout = content_slide_name,master = layout$master[1])%>%
-        ph_with(value=header,location = ph_location_type(type="title"))
+        ph_with(., 
+                value = fpar(
+                  ftext(header, 
+                        fp_text(font.size = 61.5,
+                                font.family = "Calibri Light",
+                                color = self$theme$header_color,bold = TRUE))
+                ), location = ph_location(left = 1.078504,top = -0.095 ,width = 15))
     }
     if(align=="center"){
       self$presentation <- self$presentation%>%
@@ -80,7 +95,7 @@ pptx_document <- R6::R6Class("pptx_document", list(
     if(align %in% c("left","right")){
       width <- width * 0.5
     }
-    ft<-quick_table(tabelle%>%
+    ft<-report_quick_table(tabelle%>%
                       rename_all(str_to_sentence),
                     fontsize = font_size,
                     total_width = width,
@@ -92,7 +107,13 @@ pptx_document <- R6::R6Class("pptx_document", list(
     if(current_slide==F){
       self$presentation<-self$presentation%>%
         add_slide(layout = content_slide_name,master = layout$master[1])%>%
-        ph_with(value=header,location = ph_location_type(type="title"))
+        ph_with(., 
+                value = fpar(
+                  ftext(header, 
+                        fp_text(font.size = 61.5,
+                                font.family = "Calibri Light",
+                                color = self$theme$header_color,bold = TRUE))
+                ), location = ph_location(left = 1.078504,top = -0.095 ,width = 15))
     }
     if(align=="center"){
       self$presentation<-self$presentation%>%
@@ -133,6 +154,6 @@ pptx_document <- R6::R6Class("pptx_document", list(
 #' @export
 #'
 #' @examples
-report_pptx<-function(path){
-  return(pptx_document$new(path=path))
+report_pptx<-function(path, theme=dak_theme){
+  return(pptx_document$new(path=path, theme=theme))
 }
