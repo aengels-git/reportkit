@@ -4,7 +4,7 @@
 \alias{report_pptx}
 \title{report_pptx}
 \usage{
-report_pptx(path)
+report_pptx(path, theme = dak_theme)
 }
 \arguments{
 \item{path}{either a filepath or name / name.pptx to create a file based on a template in the current workding directory.

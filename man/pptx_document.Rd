@@ -25,7 +25,7 @@ R6 Class representing a power point presentation that can modify itself
 \if{latex}{\out{\hypertarget{method-pptx_document-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{pptx_document$new(path)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{pptx_document$new(path, theme = dak_theme)}\if{html}{\out{</div>}}
 }
 
 }
