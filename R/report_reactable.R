@@ -15,7 +15,10 @@
 #' @examples
 report_reactable <- function(table,fontsize=14,headersize=16,resizable = FALSE,groupBy=NULL, 
                           total_width=8,percent_vector=NULL,
-                          defaultPageSize = 10,...){
+                          defaultPageSize = "auto",...){
+  if(defaultPageSize == "auto"){
+    defaultPageSize <- min(nrow(table),50)
+  }
   total_width <- total_width *  97.5
   if(is.null(percent_vector)==F){
     #Gurantee that the values add up to total_width

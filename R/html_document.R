@@ -165,6 +165,12 @@ html_document<-R6Class("html_document",
                   add_object = function(object,name=NULL,header=NULL,footer=NULL,width=8,height=4,...){
                     if(is.null(name)){
                       name <- deparse(substitute(object))
+                      # if some object with that name already exist, provide a random different name
+                      if(is.null(self$data)==F){
+                        if(name %in% map_chr(self$data$objects, function(x){x$content})){
+                          name <- paste0("object",round(runif(1, min=0, max=1000000)))
+                        }
+                      }
                     }
                     self$enviroment[[name]] <- object
                     
